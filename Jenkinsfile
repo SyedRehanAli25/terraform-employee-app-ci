@@ -23,19 +23,25 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                terraformInit(path: 'src/terraform/wrapper')
+                script {
+                    terraformInit(path: 'src/terraform/wrapper') // call the vars script
+                }
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                terraformValidate(path: 'src/terraform/wrapper')
+                script {
+                    terraformValidate(path: 'src/terraform/wrapper') // call the vars script
+                }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                terraformPlan(path: 'src/terraform/wrapper', env: env.TF_ENV)
+                script {
+                    terraformPlan(path: 'src/terraform/wrapper', env: env.TF_ENV) // call the vars script
+                }
             }
         }
 
