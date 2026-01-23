@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    terraformInit(path: 'src/terraform/wrapper') // call the vars script
+                    terraformInit(path: 'src/terraform/wrapper', backendReconfigure: true) // call the vars script
                 }
             }
         }
