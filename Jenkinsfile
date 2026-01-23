@@ -40,7 +40,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    terraformPlan(path: 'src/terraform/wrapper', env: env.TF_ENV) // call the vars script
+                    terraformPlan(path: 'src/terraform/wrapper', env: env.TF_ENV, varFile: "env/${env.TF_ENV}.tfvars") // call the vars script
                 }
             }
         }
